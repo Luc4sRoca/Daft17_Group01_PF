@@ -1,0 +1,3 @@
+RAW -> Datos crudos
+Clean -> Organizados y limpios
+Final -> Con tratamiento de nulos y normalizados, listos para EDA.
