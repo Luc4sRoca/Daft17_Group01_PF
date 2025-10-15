@@ -815,7 +815,7 @@ id,full_name,first_name_x,last_name_x,is_active,person_id,first_name_y,last_name
 1628380,Zach Collins,Zach,Collins,1,1628380.0,Zach,Collins,Gonzaga,USA,6-11,250.0,5.0,23,Forward-Center,Active,1610612759.0,Spurs,San Antonio,2017.0,2023.0,Y,Y,Y,2017,1,10,N,27.0,6.0,0
 1627858,Kyle Collinsworth,Kyle,Collinsworth,0,1627858.0,Kyle,Collinsworth,Brigham Young,USA,6-6,210.0,2.0,8,Guard,Inactive,1610612742.0,Mavericks,Dallas,2017.0,2017.0,Y,Y,Y,2016,,,N,34.0,0.0,0
 201954,Darren Collison,Darren,Collison,0,201954.0,Darren,Collison,UCLA,USA,6-0,160.0,11.0,,Guard,Inactive,0.0,,,2009.0,2021.0,Y,Y,Y,2009,1,21,N,38.0,12.0,0
-2555,Nick Collison,Nick,Collison,0,2555.0,Nick,Collison,Kansas,USA,6-10,255.0,15.0,4,Forward-Center,Inactive,1610612760.0,Thunder,Oklahoma City,2003.0,2017.0,N,Y,Y,2003,1,12,N,44.0,14.0,0
+2555,Nick Collison,Nick,Collison,0,2555.0,Nick,Collison,Kansas,USA,6-10,255.0,15.0,4,Forward-Center,Inactive,1610612760.0,Thunder,Oklahoma City,2003.0,2017.0,N,Y,Y,2003,1,12,N,45.0,14.0,0
 76422,Joe Colone,Joe,Colone,0,76422.0,Joe,Colone,Bloomsburg,USA,6-5,210.0,1.0,18,Forward,Inactive,1610612752.0,Knicks,New York,1948.0,1948.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,99.0,0.0,0
 1629045,Bonzie Colson,Bonzie,Colson,0,1629045.0,Bonzie,Colson,Notre Dame,USA,6-6,225.0,2.0,50,Forward,Inactive,1610612749.0,Bucks,Milwaukee,2018.0,2018.0,Y,Y,Y,Undrafted,Undrafted,Undrafted,N,29.0,0.0,0
 2173,Sean Colson,Sean,Colson,0,2173.0,Sean,Colson,North Carolina-Charlotte,USA,6-0,175.0,2.0,3,Guard,Inactive,1610612745.0,Rockets,Houston,2000.0,2002.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,50.0,2.0,0
@@ -852,7 +852,7 @@ id,full_name,first_name_x,last_name_x,is_active,person_id,first_name_y,last_name
 76444,Michael Cooper,Michael,Cooper,0,76444.0,Michael,Cooper,New Mexico,USA,6-7,170.0,12.0,21,Guard,Inactive,1610612747.0,Lakers,Los Angeles,1978.0,1989.0,N,Y,Y,1978,3,60,N,69.0,11.0,0
 1630536,Sharife Cooper,Sharife,Cooper,1,1630536.0,Sharife,Cooper,Auburn,USA,6-1,176.0,2.0,2,Guard,Inactive,1610612737.0,Hawks,Atlanta,2021.0,2021.0,Y,Y,Y,2021,2,48,N,24.0,0.0,0
 76441,Wayne Cooper,Wayne,Cooper,0,76441.0,Wayne,Cooper,New Orleans,USA,6-10,220.0,14.0,42,Center,Inactive,1610612743.0,Nuggets,Denver,1978.0,1991.0,N,Y,Y,1978,2,40,N,68.0,13.0,0
-76446,Tom Copa,Tom,Copa,0,76446.0,Tom,Copa,Marquette,USA,6-10,275.0,1.0,30,Forward,Inactive,1610612759.0,Spurs,San Antonio,1991.0,1991.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,60.0,0.0,0
+76446,Tom Copa,Tom,Copa,0,76446.0,Tom,Copa,Marquette,USA,6-10,275.0,1.0,30,Forward,Inactive,1610612759.0,Spurs,San Antonio,1991.0,1991.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,61.0,0.0,0
 203142,Chris Copeland,Chris,Copeland,0,203142.0,Chris,Copeland,Colorado,USA,6-9,239.0,5.0,,Forward,Inactive,0.0,,,2012.0,2015.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,41.0,3.0,0
 76447,Hollis Copeland,Hollis,Copeland,0,76447.0,Hollis,Copeland,Rutgers,USA,6-6,180.0,2.0,45,Forward,Inactive,1610612752.0,Knicks,New York,1979.0,1981.0,N,Y,Y,1978,3,46,N,69.0,2.0,0
 76448,Lanard Copeland,Lanard,Copeland,0,76448.0,Lanard,Copeland,Georgia State,USA,6-6,190.0,2.0,21,Forward,Inactive,1610612755.0,76ers,Philadelphia,1989.0,1991.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,60.0,2.0,0
@@ -1195,7 +1195,7 @@ id,full_name,first_name_x,last_name_x,is_active,person_id,first_name_y,last_name
 76643,Jay Edwards,Jay,Edwards,0,76643.0,Jay,Edwards,Indiana,USA,6-4,185.0,1.0,3,Forward,Inactive,1610612746.0,Clippers,Los Angeles,1989.0,1989.0,N,Y,Y,1989,2,33,N,56.0,0.0,0
 2823,John Edwards,John,Edwards,0,2823.0,John,Edwards,Kent State,USA,7-0,275.0,3.0,54,Center,Inactive,1610612737.0,Hawks,Atlanta,2004.0,2005.0,Y,Y,Y,Undrafted,Undrafted,Undrafted,N,44.0,1.0,0
 1630556,Kessler Edwards,Kessler,Edwards,1,,,,,,,,,,,,,,,,,,,,,,,,,,1
-236,Kevin Edwards,Kevin,Edwards,0,236.0,Kevin,Edwards,DePaul,USA,6-3,210.0,11.0,21,Guard,Inactive,1610612748.0,Heat,Miami,1988.0,2000.0,N,Y,Y,1988,1,20,N,59.0,12.0,0
+236,Kevin Edwards,Kevin,Edwards,0,236.0,Kevin,Edwards,DePaul,USA,6-3,210.0,11.0,21,Guard,Inactive,1610612748.0,Heat,Miami,1988.0,2000.0,N,Y,Y,1988,1,20,N,60.0,12.0,0
 1630306,Rob Edwards,Rob,Edwards,0,1630306.0,Rob,Edwards,Arizona State,USA,6-5,205.0,2.0,,Guard,Inactive,0.0,,,2021.0,2021.0,Y,Y,Y,Undrafted,Undrafted,Undrafted,N,28.0,0.0,0
 202197,Shane Edwards,Shane,Edwards,0,,,,,,,,,,,,,,,,,,,,,,,,,,1
 1629053,Vincent Edwards,Vincent,Edwards,0,1629053.0,Vincent,Edwards,Purdue,USA,6-8,225.0,2.0,12,Forward,Inactive,1610612745.0,Rockets,Houston,2018.0,2018.0,Y,Y,Y,2018,2,52,N,29.0,0.0,0
@@ -1800,7 +1800,7 @@ id,full_name,first_name_x,last_name_x,is_active,person_id,first_name_y,last_name
 765,Hersey Hawkins,Hersey,Hawkins,0,765.0,Hersey,Hawkins,Bradley,USA,6-3,200.0,13.0,33,Guard,Inactive,1610612755.0,76ers,Philadelphia,1988.0,2000.0,N,Y,Y,1988,1,6,N,59.0,12.0,0
 1038,Juaquin Hawkins,Juaquin,Hawkins,0,1038.0,Juaquin,Hawkins,Long Beach State,USA,6-7,205.0,2.0,29,Forward,Inactive,1610612745.0,Rockets,Houston,2002.0,2002.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,52.0,0.0,0
 76974,Marshall Hawkins,Marshall,Hawkins,0,76974.0,Marshall,Hawkins,Tennessee,USA,6-3,205.0,1.0,,Forward,Inactive,1610610030.0,Olympians,Indianapolis,1949.0,1949.0,N,Y,Y,1948,,,N,101.0,0.0,0
-1138,Michael Hawkins,Michael,Hawkins,0,1138.0,Michael,Hawkins,Xavier,USA,,,4.0,,Guard,Inactive,0.0,,,1996.0,2000.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,52.0,4.0,0
+1138,Michael Hawkins,Michael,Hawkins,0,1138.0,Michael,Hawkins,Xavier,USA,,,4.0,,Guard,Inactive,0.0,,,1996.0,2000.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,53.0,4.0,0
 76975,Robert Hawkins,Robert,Hawkins,0,76975.0,Robert,Hawkins,Illinois State,USA,6-4,190.0,4.0,11,Guard,Inactive,1610612751.0,Nets,New Jersey,1975.0,1978.0,N,Y,Y,1975,3,51,N,71.0,3.0,0
 76977,Tom Hawkins,Tom,Hawkins,0,76977.0,Tom,Hawkins,Notre Dame,USA,6-5,210.0,10.0,33,Forward,Inactive,1610612747.0,Lakers,Los Angeles,1959.0,1968.0,N,Y,Y,1959,1,3,N,88.0,9.0,0
 76978,Nate Hawthorne,Nate,Hawthorne,0,76978.0,Nate,Hawthorne,Southern Illinois,USA,6-4,190.0,3.0,32,Guard,Inactive,1610612756.0,Suns,Phoenix,1973.0,1975.0,N,Y,Y,1973,7,118,N,74.0,2.0,0
@@ -2517,7 +2517,7 @@ id,full_name,first_name_x,last_name_x,is_active,person_id,first_name_y,last_name
 77362,Kurk Lee,Kurk,Lee,0,77362.0,Kurk,Lee,Towson,USA,6-3,190.0,1.0,20,Guard,Inactive,1610612751.0,Nets,New Jersey,1990.0,1990.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,58.0,0.0,0
 202723,Malcolm Lee,Malcolm,Lee,0,,,,,,,,,,,,,,,,,,,,,,,,,,1
 77363,Rock Lee,Rock,Lee,0,77363.0,Rock,Lee,San Diego State,USA,6-10,220.0,1.0,34,Center,Inactive,1610612746.0,Clippers,San Diego,1981.0,1981.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,70.0,0.0,0
-77364,Ron Lee,Ron,Lee,0,77364.0,Ron,Lee,Oregon,USA,6-3,193.0,6.0,30,Guard,Inactive,1610612756.0,Suns,Phoenix,1976.0,1981.0,N,Y,Y,1976,1,10,N,72.0,5.0,0
+77364,Ron Lee,Ron,Lee,0,77364.0,Ron,Lee,Oregon,USA,6-3,193.0,6.0,30,Guard,Inactive,1610612756.0,Suns,Phoenix,1976.0,1981.0,N,Y,Y,1976,1,10,N,73.0,5.0,0
 77365,Russell Lee,Russell,Lee,0,77365.0,Russell,Lee,Marshall,USA,6-5,185.0,3.0,11,Forward,Inactive,1610612749.0,Bucks,Milwaukee,1972.0,1974.0,N,Y,Y,1972,1,6,N,75.0,2.0,0
 1630240,Saben Lee,Saben,Lee,0,1630240.0,Saben,Lee,Vanderbilt,USA,6-2,183.0,3.0,38,Guard,Active,1610612756.0,Suns,Phoenix,2020.0,2023.0,Y,Y,Y,2020,2,38,N,26.0,3.0,0
 77366,Ed Leede,Ed,Leede,0,,,,,,,,,,,,,,,,,,,,,,,,,,1
@@ -2780,7 +2780,7 @@ id,full_name,first_name_x,last_name_x,is_active,person_id,first_name_y,last_name
 77507,Howie McCarty,Howie,McCarty,0,77507.0,Howie,McCarty,Wayne State,USA,,,1.0,,,Inactive,1610610028.0,Falcons,Detroit,1946.0,1946.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,120.0,0.0,0
 1820,Kelly McCarty,Kelly,McCarty,0,1820.0,Kelly,McCarty,Southern Mississippi,USA,6-7,200.0,1.0,11,Guard-Forward,Inactive,1610612743.0,Nuggets,Denver,1998.0,1998.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,50.0,0.0,0
 962,Walter McCarty,Walter,McCarty,0,962.0,Walter,McCarty,Kentucky,USA,6-10,245.0,10.0,0,Forward,Inactive,1610612738.0,Celtics,Boston,1996.0,2005.0,N,Y,Y,1996,1,19,N,51.0,9.0,0
-1043,Amal McCaskill,Amal,McCaskill,0,1043.0,Amal,McCaskill,Marquette,USA,6-11,235.0,5.0,00,Center,Inactive,1610612755.0,76ers,Philadelphia,1996.0,2003.0,N,Y,Y,1996,2,49,N,51.0,7.0,0
+1043,Amal McCaskill,Amal,McCaskill,0,1043.0,Amal,McCaskill,Marquette,USA,6-11,235.0,5.0,00,Center,Inactive,1610612755.0,76ers,Philadelphia,1996.0,2003.0,N,Y,Y,1996,2,49,N,52.0,7.0,0
 1627775,Patrick McCaw,Patrick,McCaw,0,1627775.0,Patrick,McCaw,UNLV,USA,6-7,181.0,6.0,,Guard,Inactive,0.0,,,2016.0,2020.0,Y,Y,Y,2016,2,38,N,29.0,4.0,0
 77509,Dwayne McClain,Dwayne,McClain,0,77509.0,Dwayne,McClain,Villanova,USA,6-6,185.0,1.0,44,Guard,Inactive,1610612754.0,Pacers,Indiana,1985.0,1985.0,N,Y,Y,1985,2,27,N,62.0,0.0,0
 77510,Ted 'Hound Dog' McClain,Ted 'Hound Dog',McClain,0,77510.0,"Ted, Hound Dog",McClain,Tennessee State,USA,6-1,180.0,3.0,12,Guard,Inactive,1610612743.0,Nuggets,Denver,1976.0,1978.0,N,Y,Y,1971,2,22,N,78.0,2.0,0
@@ -3908,7 +3908,7 @@ id,full_name,first_name_x,last_name_x,is_active,person_id,first_name_y,last_name
 78150,James Silas,James,Silas,0,78150.0,James,Silas,Stephen F. Austin,USA,6-1,180.0,6.0,13,Guard,Inactive,1610612759.0,Spurs,San Antonio,1976.0,1981.0,N,Y,Y,1972,5,70,N,76.0,5.0,0
 78151,Paul Silas,Paul,Silas,0,78151.0,Paul,Silas,Creighton,USA,6-7,220.0,16.0,36,Forward,Inactive,1610612737.0,Hawks,Atlanta,1964.0,1979.0,N,Y,Y,1964,2,10,N,82.0,15.0,0
 202918,Xavier Silas,Xavier,Silas,0,202918.0,Xavier,Silas,Northern Illinois,USA,6-5,205.0,3.0,9,Guard,Inactive,1610612755.0,76ers,Philadelphia,2011.0,2017.0,Y,Y,Y,2011,,,N,37.0,6.0,0
-202081,Garret Siler,Garret,Siler,0,202081.0,Garret,Siler,Augusta State,USA,6-11,305.0,2.0,20,Center,Inactive,1610612756.0,Suns,Phoenix,2010.0,2010.0,Y,Y,Y,Undrafted,Undrafted,Undrafted,N,38.0,0.0,0
+202081,Garret Siler,Garret,Siler,0,202081.0,Garret,Siler,Augusta State,USA,6-11,305.0,2.0,20,Center,Inactive,1610612756.0,Suns,Phoenix,2010.0,2010.0,Y,Y,Y,Undrafted,Undrafted,Undrafted,N,39.0,0.0,0
 78152,Mike Silliman,Mike,Silliman,0,78152.0,Mike,Silliman,Army,USA,6-6,225.0,1.0,4-27,Forward,Inactive,1610612746.0,Braves,Buffalo,1970.0,1970.0,N,Y,Y,1966,8,69,N,81.0,0.0,0
 1629735,Chris Silva,Chris,Silva,0,,,,,,,,,,,,,,,,,,,,,,,,,,1
 101134,Wayne Simien,Wayne,Simien,0,101134.0,Wayne,Simien,Kansas,USA,6-9,250.0,3.0,25,Forward,Inactive,1610612748.0,Heat,Miami,2005.0,2006.0,N,Y,Y,2005,1,29,N,42.0,1.0,0
@@ -3943,7 +3943,7 @@ id,full_name,first_name_x,last_name_x,is_active,person_id,first_name_y,last_name
 78163,Zeke Sinicola,Zeke,Sinicola,0,78163.0,Zeke,Sinicola,Niagara,USA,5-10,165.0,2.0,5,Guard,Inactive,1610612765.0,Pistons,Ft. Wayne Zollner,1951.0,1953.0,N,Y,Y,1951,1,4,N,96.0,2.0,0
 1629686,Deividas Sirvydis,Deividas,Sirvydis,1,1629686.0,Deividas,Sirvydis,Lietuvos rytas Vilnius,Lithuania,6-8,190.0,3.0,,Forward-Guard,Inactive,0.0,,,2020.0,2021.0,Y,Y,Y,2019,2,37,N,25.0,1.0,0
 78164,Charlie Sitton,Charlie,Sitton,0,78164.0,Charlie,Sitton,Oregon State,USA,6-8,210.0,1.0,52,Forward,Inactive,1610612742.0,Mavericks,Dallas,1984.0,1984.0,N,Y,Y,1984,2,38,N,63.0,0.0,0
-203491,Peyton Siva,Peyton,Siva,0,203491.0,Peyton,Siva,Louisville,USA,6-0,185.0,1.0,34,Guard,Inactive,1610612765.0,Pistons,Detroit,2013.0,2013.0,Y,Y,Y,2013,2,56,N,34.0,0.0,0
+203491,Peyton Siva,Peyton,Siva,0,203491.0,Peyton,Siva,Louisville,USA,6-0,185.0,1.0,34,Guard,Inactive,1610612765.0,Pistons,Detroit,2013.0,2013.0,Y,Y,Y,2013,2,56,N,35.0,0.0,0
 101,Scott Skiles,Scott,Skiles,0,101.0,Scott,Skiles,Michigan State,USA,6-1,180.0,10.0,5,Guard,Inactive,1610612753.0,Magic,Orlando,1986.0,1995.0,N,Y,Y,1986,1,22,N,61.0,9.0,0
 78167,Al Skinner,Al,Skinner,0,78167.0,Al,Skinner,Massachusetts,USA,6-3,190.0,4.0,30,Guard,Inactive,1610612751.0,Nets,New Jersey,1976.0,1979.0,N,Y,Y,1974,9,160,N,73.0,3.0,0
 1730,Brian Skinner,Brian,Skinner,0,,,,,,,,,,,,,,,,,,,,,,,,,,1
@@ -4311,7 +4311,7 @@ id,full_name,first_name_x,last_name_x,is_active,person_id,first_name_y,last_name
 718,Gary Trent,Gary,Trent,0,718.0,Gary,Trent,Ohio,USA,6-8,250.0,10.0,20,Forward,Inactive,1610612750.0,Timberwolves,Minnesota,1995.0,2003.0,N,Y,Y,1995,1,11,N,51.0,8.0,0
 1629018,Gary Trent Jr.,Gary,Trent Jr.,1,,,,,,,,,,,,,,,,,,,,,,,,,,1
 2244,Jeff Trepagnier,Jeff,Trepagnier,0,2244.0,Jeff,Trepagnier,USC,USA,6-4,200.0,4.0,4,Guard,Inactive,1610612743.0,Nuggets,Denver,2001.0,2003.0,Y,Y,Y,2001,2,35,N,46.0,2.0,0
-78651,John Tresvant,John,Tresvant,0,78651.0,John,Tresvant,Seattle,USA,6-7,215.0,9.0,12,Forward,Inactive,1610612764.0,Bullets,Baltimore,1964.0,1972.0,N,Y,Y,1964,5,40,N,85.0,8.0,0
+78651,John Tresvant,John,Tresvant,0,78651.0,John,Tresvant,Seattle,USA,6-7,215.0,9.0,12,Forward,Inactive,1610612764.0,Bullets,Baltimore,1964.0,1972.0,N,Y,Y,1964,5,40,N,86.0,8.0,0
 1629019,Allonzo Trier,Allonzo,Trier,0,1629019.0,Allonzo,Trier,Arizona,USA,6-4,200.0,2.0,,Guard,Inactive,0.0,,,2018.0,2019.0,Y,Y,Y,2018,,,N,29.0,1.0,0
 78368,Dick Triptow,Dick,Triptow,0,78368.0,Dick,Triptow,DePaul,USA,6-0,170.0,2.0,,Guard,Inactive,1610612765.0,Pistons,Ft. Wayne Zollner,1948.0,1949.0,N,Y,Y,Undrafted,Undrafted,Undrafted,N,103.0,1.0,0
 78369,Kelly Tripucka,Kelly,Tripucka,0,78369.0,Kelly,Tripucka,Notre Dame,USA,6-6,220.0,10.0,7,Forward,Inactive,1610612765.0,Pistons,Detroit,1981.0,1990.0,N,Y,Y,1981,1,12,N,66.0,9.0,0
@@ -4415,7 +4415,7 @@ id,full_name,first_name_x,last_name_x,is_active,person_id,first_name_y,last_name
 1037,Stojko Vrankovic,Stojko,Vrankovic,0,,,,,,,,,,,,,,,,,,,,,,,,,,1
 78425,Brett Vroman,Brett,Vroman,0,78425.0,Brett,Vroman,UNLV,USA,7-0,220.0,1.0,52,Center,Inactive,1610612762.0,Jazz,Utah,1980.0,1980.0,N,Y,Y,1978,4,87,N,69.0,0.0,0
 2761,Jackson Vroman,Jackson,Vroman,0,,,,,,,,,,,,,,,,,,,,,,,,,,1
-202696,Nikola Vucevic,Nikola,Vucevic,1,202696.0,Nikola,Vucevic,Southern California,Montenegro,6-10,260.0,12.0,9,Center,Active,1610612741.0,Bulls,Chicago,2011.0,2023.0,N,Y,Y,2011,1,16,N,34.0,12.0,0
+202696,Nikola Vucevic,Nikola,Vucevic,1,202696.0,Nikola,Vucevic,Southern California,Montenegro,6-10,260.0,12.0,9,Center,Active,1610612741.0,Bulls,Chicago,2011.0,2023.0,N,Y,Y,2011,1,16,N,35.0,12.0,0
 2756,Sasha Vujacic,Sasha,Vujacic,0,2756.0,Sasha,Vujacic,Udine,Slovenia,6-7,195.0,11.0,18,Guard,Inactive,1610612747.0,Lakers,Los Angeles,2004.0,2016.0,N,Y,Y,2004,1,27,N,41.0,12.0,0
 1629731,Dean Wade,Dean,Wade,1,1629731.0,Dean,Wade,Kansas State,USA,6-9,228.0,4.0,32,Forward-Center,Active,1610612739.0,Cavaliers,Cleveland,2019.0,2023.0,Y,Y,Y,Undrafted,Undrafted,Undrafted,N,28.0,4.0,0
 2548,Dwyane Wade,Dwyane,Wade,0,,,,,,,,,,,,,,,,,,,,,,,,,,1
