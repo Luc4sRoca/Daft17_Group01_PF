@@ -285,7 +285,7 @@ if os.path.exists(final_pl_path):
     # --- Normalización universal del peso ---
     if "weight" in plf.columns:
         plf["weight"] = pd.to_numeric(plf["weight"], errors="coerce")
-        plf["weight"] = (plf["weight"] ).round(0).astype("Int64")
+        plf["weight"] = (plf["weight"] +0).round(0).astype("Int64")
     # --- Guardar resultado corregido ---
     plf.to_csv(final_pl_path, index=False)
     print("🔧 Reforzado: 'edad', 'años_jugando' y 'weight' recalculados/corregidos en player_enriched_clean.csv (final)")
