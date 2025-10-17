@@ -1,0 +1,32 @@
+Pipeline start: 2025-10-16T21:03:44
+RAW_DIR=c:\Users\juanl\Downloads\final\csv\Daft17_Group01_PF\data_raw | OUT_DIR=c:\Users\juanl\Downloads\final\csv\Daft17_Group01_PF\data_final
+Stage 1: Load and clean all *_raw files
+Loaded and cleaned common_player_info_raw.csv (4171 rows, 33 cols)
+Loaded and cleaned game_raw.csv (65698 rows, 55 cols)
+Loaded and cleaned game_summary_raw.csv (58110 rows, 14 cols)
+Loaded and cleaned other_stats_raw.csv (28271 rows, 26 cols)
+Loaded and cleaned player_raw.csv (4831 rows, 5 cols)
+Loaded and cleaned team_raw.csv (30 rows, 7 cols)
+Normalizing ID columns
+common_player_info: renamed {'person_id': 'player_id', 'team_id': 'team_id'}
+game: renamed {'game_id': 'game_id'}
+game_summary: renamed {'game_id': 'game_id'}
+other_stats: renamed {'game_id': 'game_id'}
+player: renamed {'id': 'player_id'}
+team: renamed {'id': 'team_id'}
+Normalized common_player_info (height, weight, season_exp)
+Stage 2: PK/FK validation
+PK team_id: True. Duplicate rows: 0
+PK player_id: True. Duplicate rows: 0
+PK game_id: False. Duplicate rows: 56
+PK common_player_info.player_id: True. Duplicate rows: 0
+Stage 3: Export final tables
+Saved common_player_info_final.csv (4171 rows, 33 cols)
+Saved game_final.csv (65698 rows, 55 cols)
+Saved game_summary_final.csv (58110 rows, 14 cols)
+Saved other_stats_final.csv (28271 rows, 26 cols)
+Saved player_final.csv (4831 rows, 5 cols)
+Saved team_final.csv (30 rows, 7 cols)
+No ingestion changes since last run.
+Saved ingestion snapshot to data_final/data_status.csv
+Pipeline completed in 8.04s
