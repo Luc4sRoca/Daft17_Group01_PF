@@ -1,4 +1,4 @@
-﻿player_id,full_name,first_name,last_name,is_active
+﻿id,full_name,first_name,last_name,is_active
 76001,Alaa Abdelnaby,Alaa,Abdelnaby,0
 76002,Zaid Abdul-Aziz,Zaid,Abdul-Aziz,0
 76003,Kareem Abdul-Jabbar,Kareem,Abdul-Jabbar,0

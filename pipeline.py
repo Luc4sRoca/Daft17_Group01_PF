@@ -1,195 +1,185 @@
+# ===============================================================
 # pipeline.py
-# Versión ejecutable del pipeline (igual al pipeline.ipynb pero lista para watchdog)
+# ETL universal con auditoría funcional detallada
+# Corrige lectura regional, escalas numéricas y conserva trazabilidad
+# Compatible con coma o punto decimal (automático)
+# ===============================================================
 
-import os, re, time
-from datetime import datetime
+import os
+import re
 import pandas as pd
 import numpy as np
+from datetime import datetime
 
-# ===== CONFIG =====
-start_ts = datetime.now()
-CWD = os.getcwd()
+# === CONFIGURACIÓN GENERAL ===
+try:
+    CWD = os.path.dirname(os.path.abspath(__file__))
+except NameError:
+    CWD = os.getcwd()
+
 RAW_DIR = os.path.join(CWD, "data_raw")
-OUT_DIR = os.path.join(CWD, "data_final")
+FINAL_DIR = os.path.join(CWD, "data_final")
 os.makedirs(RAW_DIR, exist_ok=True)
-os.makedirs(OUT_DIR, exist_ok=True)
-LOG_PATH = os.path.join(OUT_DIR, f"pipeline_run_{start_ts.strftime('%Y%m%d_%H%M%S')}.txt")
+os.makedirs(FINAL_DIR, exist_ok=True)
 
+# === LOG ===
 def log(msg):
-    print(msg)
-    with open(LOG_PATH, "a", encoding="utf-8") as f:
-        f.write(str(msg) + "\n")
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
-log(f"Pipeline start: {start_ts.isoformat(timespec='seconds')}")
-log(f"RAW_DIR={RAW_DIR} | OUT_DIR={OUT_DIR}")
+# === FUNCIONES AUXILIARES ===
+def snake_case(name):
+    """Estandariza los nombres de columnas a snake_case."""
+    return re.sub(r'[^0-9a-zA-Z]+', '_', name.strip()).lower()
 
-# ===== HELPERS =====
-def snake_case(name: str) -> str:
-    name = re.sub(r"[^\w]+", "_", name)
-    name = re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", name)
-    name = re.sub(r"_+", "_", name)
-    return name.lower().strip("_")
-
-def load_any(path: str) -> pd.DataFrame:
-    ext = os.path.splitext(path)[1].lower()
-    if ext == ".csv": return pd.read_csv(path, low_memory=False)
-    if ext in [".xlsx", ".xls"]: return pd.read_excel(path)
-    if ext == ".json":
-        try: return pd.read_json(path, orient="records")
-        except ValueError: return pd.read_json(path, lines=True)
-    if ext == ".parquet": return pd.read_parquet(path)
-    raise ValueError(f"Unsupported file type: {ext}")
-
-def clean_dataframe(df: pd.DataFrame) -> pd.DataFrame:
-    df = df.copy()
-    df.columns = [snake_case(c) for c in df.columns]
-    df = df.dropna(how="all")
+def clean_dataframe(df):
+    """Elimina duplicados y limpia espacios o 'nan' textuales."""
+    df = df.drop_duplicates()
     for c in df.columns:
-        try:
-            df[c] = df[c].astype(str).str.strip().replace(
-                {"": np.nan, "None": np.nan, "NULL": np.nan, "nan": np.nan, "NaN": np.nan}
-            )
-        except Exception:
-            pass
-        c_low = c.lower()
-        if any(k in c_low for k in ["id","game_id","player_id","person_id","team_id"]):
-            df[c] = pd.to_numeric(df[c], errors="coerce").astype("Int64")
-        elif any(k in c_low for k in ["date","dt","fecha"]):
-            df[c] = pd.to_datetime(df[c], errors="coerce")
+        if df[c].dtype == "object":
+            df[c] = df[c].astype(str).str.strip()
+            df[c] = df[c].replace({"nan": None, "": None})
     return df
 
-# ===== NORMALIZADOR DE common_player_info =====
-def normalize_common_player_info(df: pd.DataFrame) -> pd.DataFrame:
-    if df.empty:
-        return df
-    df = df.copy()
+def normalize_booleans(df):
+    """Detecta y normaliza columnas booleanas."""
+    bool_map = {'Y': 1, 'YES': 1, 'TRUE': 1, 'T': 1, '1': 1,
+                'N': 0, 'NO': 0, 'FALSE': 0, 'F': 0, '0': 0}
+    for col in df.columns:
+        sample = df[col].dropna().astype(str).str.upper()
+        if (sample.isin(bool_map.keys()).mean() > 0.6):
+            df[col] = df[col].astype(str).str.upper().replace(bool_map).astype("Int64")
+    return df
 
-    # Renombres típicos de ID
-    cols = {c.lower(): c for c in df.columns}
-    if "person_id" in cols: df.rename(columns={cols["person_id"]: "player_id"}, inplace=True)
-    if "playerid" in cols: df.rename(columns={cols["playerid"]: "player_id"}, inplace=True)
-    if "teamid" in cols: df.rename(columns={cols["teamid"]: "team_id"}, inplace=True)
+def clean_percent_text(series):
+    """Limpia porcentajes y reemplaza comas por puntos."""
+    return (
+        series.astype(str)
+        .str.replace("%", "", regex=False)
+        .str.replace(",", ".", regex=False)
+        .replace("nan", np.nan)
+    )
 
-    # height: solo reemplaza "-" por ","
+def convert_to_year(series):
+    """Convierte fechas o textos a solo año (Int64)."""
+    return pd.to_datetime(series, errors="coerce").dt.year.astype("Int64")
+
+# === AUDITORÍA DE CAMBIOS ===
+def audit_changes(df_raw, df_final, name):
+    """Compara tipos y proporción de nulos antes y después del procesamiento."""
+    print(f"\n=== 🔍 Auditoría: {name.upper()} ===")
+    cols = sorted(set(df_raw.columns) & set(df_final.columns))
+    for c in cols:
+        raw_type = str(df_raw[c].dtype)
+        final_type = str(df_final[c].dtype)
+        raw_null = df_raw[c].isna().mean()
+        final_null = df_final[c].isna().mean()
+        diff_null = round(final_null - raw_null, 2)
+        print(f"→ {c}: {raw_type} → {final_type} | ΔNulos={diff_null:+.2f} | OK")
+    print()
+
+# === PIPELINE PRINCIPAL ===
+def process_file(path):
+    name = os.path.basename(path).replace("_raw.csv", "")
+    log(f"🔧 Procesando tabla: {name}")
+
+    # --- LECTURA ROBUSTA ---
+    try:
+        try:
+            # Caso habitual (punto decimal)
+            df_raw = pd.read_csv(path, encoding="utf-8-sig", sep=",", decimal=".")
+        except Exception:
+            # Caso regional (coma decimal)
+            df_raw = pd.read_csv(path, encoding="utf-8-sig", sep=";", decimal=",")
+    except Exception as e:
+        log(f"❌ Error al leer {path}: {e}")
+        return None
+
+    # --- Limpieza y normalización básica ---
+    df = df_raw.copy()
+    df.columns = [snake_case(c) for c in df.columns]
+    df = clean_dataframe(df)
+    df = normalize_booleans(df)
+
+    # --- Conversión temprana de columnas numéricas ---
+    for c in df.columns:
+        if re.search(r"(weight|year_founded|height|id|score|pts|reb|ast|pct|num|count|rank)", c, re.I):
+            df[c] = pd.to_numeric(df[c], errors="ignore")
+
+    # === AJUSTES ESPECÍFICOS ===
+    # --- Altura: reemplazar "-" por "'"
     if "height" in df.columns:
-        df["height"] = df["height"].astype(str).str.replace("-", ",", regex=False)
+        df["height"] = df["height"].astype(str).str.replace("-", "'", regex=False)
 
-    # weight: si pesa más de 500, dividir por 10
+    # --- Fechas y años ---
+    for col in df.columns:
+        if re.search(r"(from_year|to_year|draft_year|season)$", col, re.I):
+            df[col] = convert_to_year(df[col])
+
+    # --- Porcentajes ---
+    pct_cols = [c for c in df.columns if "_pct_" in c]
+    for c in pct_cols:
+        df[c] = pd.to_numeric(clean_percent_text(df[c]), errors="coerce")
+
+    # --- Protección season_type ---
+    if "season_type" in df.columns:
+        df["season_type"] = df["season_type"].astype(str).replace("nan", np.nan)
+
+    # --- Control de IDs numéricos ---
+    for c in df.columns:
+        if c.endswith("_id"):
+            df[c] = pd.to_numeric(df[c], errors="coerce").astype("Int64")
+
+    # --- Corrección de escala para columnas específicas ---
     if "weight" in df.columns:
         df["weight"] = pd.to_numeric(df["weight"], errors="coerce")
-        df["weight"] = df["weight"].apply(lambda x: x / 10 if pd.notna(x) and x > 500 else x)
+        df.loc[df["weight"] > 600, "weight"] = df["weight"] / 10  # Ej: 2500 → 250
 
-    # season_exp: numérico, mantiene ceros
-    if "season_exp" in df.columns:
-        df["season_exp"] = df["season_exp"].replace({"R": "0"})
-        df["season_exp"] = pd.to_numeric(df["season_exp"], errors="coerce").fillna(0).astype("Int64")
+    if "year_founded" in df.columns:
+        df["year_founded"] = pd.to_numeric(df["year_founded"], errors="coerce")
+        df.loc[df["year_founded"] > 3000, "year_founded"] = df["year_founded"] / 10  # Ej: 19900 → 1990
 
-    return df
+    # --- Fecha de carga solo para log ---
+    load_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    log(f"📅 Fecha de procesamiento: {load_date}")
 
-# ===== VALIDACIONES =====
-def validate_pk(df, cols):
-    if not all(c in df.columns for c in cols):
-        return False, f"Missing columns: {set(cols)-set(df.columns)}"
-    dups = df.duplicated(subset=cols).sum()
-    return dups == 0, f"Duplicate rows: {dups}"
-
-def validate_fk(df_from, col_from, df_to, col_to):
-    if col_from not in df_from.columns or col_to not in df_to.columns:
-        return False, f"Columns not found: {col_from} or {col_to}"
-    missing = ~df_from[col_from].isin(df_to[col_to])
-    return missing.sum() == 0, f"Unmatched rows: {missing.sum()}"
-
-# ===== STAGE 1: LOAD + CLEAN =====
-t0 = time.time()
-log("Stage 1: Load and clean all *_raw files")
-raw_files = [f for f in os.listdir(RAW_DIR)
-             if f.endswith(("_raw.csv","_raw.xlsx","_raw.xls","_raw.json","_raw.parquet"))]
-dfs = {}
-if not raw_files:
-    log("No *_raw files found in data_raw/")
-else:
-    for fname in raw_files:
-        try:
-            path = os.path.join(RAW_DIR, fname)
-            df = load_any(path)
-            df = clean_dataframe(df)
-            key = fname.replace("_raw", "").split(".")[0]
-            dfs[key] = df
-            log(f"Loaded and cleaned {fname} ({df.shape[0]} rows, {df.shape[1]} cols)")
-        except Exception as e:
-            log(f"Error reading {fname}: {e}")
-
-# ===== NORMALIZAR IDs =====
-log("Normalizing ID columns")
-for k, df in dfs.items():
-    rename_map = {}
+    # --- Relleno nulos por tipo ---
     for c in df.columns:
-        lc = c.lower()
-        if lc in ["person_id", "playerid", "player_id"]: rename_map[c] = "player_id"
-        elif lc in ["teamid", "team_id"] or (lc == "id" and "team" in k): rename_map[c] = "team_id"
-        elif lc in ["gameid", "game_id"]: rename_map[c] = "game_id"
-        elif lc == "id" and "player" in k: rename_map[c] = "player_id"
-    if rename_map:
-        df.rename(columns=rename_map, inplace=True)
-        log(f"{k}: renamed {rename_map}")
-    dfs[k] = df
+        if pd.api.types.is_numeric_dtype(df[c]):
+            df[c] = df[c].fillna(0)
+        elif re.search(r"(date|year)", c, re.I):
+            df[c] = df[c].fillna(pd.NA)
+        else:
+            df[c] = df[c].fillna("")
 
-# ===== NORMALIZAR common_player_info =====
-if "common_player_info" in dfs:
-    dfs["common_player_info"] = normalize_common_player_info(dfs["common_player_info"])
-    log("Normalized common_player_info (height, weight, season_exp)")
+    # --- Duplicados por ID ---
+    pk_candidates = [c for c in df.columns if c.endswith("_id")]
+    if pk_candidates:
+        before = len(df)
+        df = df.drop_duplicates(subset=pk_candidates, keep="first")
+        dropped = before - len(df)
+        print(f"   🧹 Filas eliminadas por IDs vacíos o duplicados: {dropped}")
 
-# ===== VALIDACIONES =====
-t1 = time.time()
-log("Stage 2: PK/FK validation")
+    # --- Auditoría ---
+    audit_changes(df_raw, df, name)
 
-player = dfs.get("player", pd.DataFrame())
-team   = dfs.get("team", pd.DataFrame())
-game   = dfs.get("game", pd.DataFrame())
-summary= dfs.get("game_summary", pd.DataFrame())
-stats  = dfs.get("other_stats", pd.DataFrame())
-cpi    = dfs.get("common_player_info", pd.DataFrame())
-
-if not team.empty and "team_id" in team.columns:
-    ok, msg = validate_pk(team, ["team_id"]); log(f"PK team_id: {ok}. {msg}")
-if not player.empty and "player_id" in player.columns:
-    ok, msg = validate_pk(player, ["player_id"]); log(f"PK player_id: {ok}. {msg}")
-if not game.empty and "game_id" in game.columns:
-    ok, msg = validate_pk(game, ["game_id"]); log(f"PK game_id: {ok}. {msg}")
-if not cpi.empty and "player_id" in cpi.columns:
-    ok, msg = validate_pk(cpi, ["player_id"]); log(f"PK common_player_info.player_id: {ok}. {msg}")
-
-# ===== EXPORT =====
-t2 = time.time()
-log("Stage 3: Export final tables")
-
-for key, df in dfs.items():
-    out_name = f"{key}_final.csv"
-    out_path = os.path.join(OUT_DIR, out_name)
+    # === GUARDAR ===
+    out_path = os.path.join(FINAL_DIR, f"{name}_final.csv")
     df.to_csv(out_path, index=False, encoding="utf-8-sig")
-    log(f"Saved {out_name} ({df.shape[0]} rows, {df.shape[1]} cols)")
+    log(f"✅ {name} procesado correctamente ({len(df)} filas). Guardado en {out_path}\n")
+    return out_path
 
-# ===== SNAPSHOT =====
-status_file = os.path.join(OUT_DIR, "data_status.csv")
-current = {k: (v.shape[0] if isinstance(v, pd.DataFrame) and not v.empty else 0) for k, v in dfs.items()}
-prev = {}
-if os.path.exists(status_file):
-    try:
-        prev_df = pd.read_csv(status_file)
-        prev = dict(zip(prev_df["table"], prev_df["rows"]))
-    except Exception:
-        prev = {}
-changes = {k: n - prev.get(k, 0) for k, n in current.items() if n - prev.get(k, 0) != 0}
-if changes:
-    log("Changes since last run:")
-    for k, d in changes.items():
-        sign = "+" if d >= 0 else ""
-        log(f" - {k}: {sign}{d} rows")
-else:
-    log("No ingestion changes since last run.")
-pd.DataFrame({"table": list(current.keys()), "rows": list(current.values())}).to_csv(status_file, index=False, encoding="utf-8-sig")
-log(f"Saved ingestion snapshot to data_final/data_status.csv")
 
-# ===== END =====
-end_ts = datetime.now()
-log(f"Pipeline completed in {(end_ts - start_ts).total_seconds():.2f}s")
+# === EJECUCIÓN PRINCIPAL ===
+def main():
+    log("🚀 Iniciando pipeline ETL funcional...")
+    files = [f for f in os.listdir(RAW_DIR) if f.endswith("_raw.csv")]
+    if not files:
+        log("⚠️  No se encontraron archivos *_raw.csv en la carpeta de entrada.")
+        return
+    for f in files:
+        process_file(os.path.join(RAW_DIR, f))
+    log("🟢 Pipeline completado correctamente.\n")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,4 +1,4 @@
-﻿team_id,full_name,abbreviation,nickname,city,state,year_founded
+﻿id,full_name,abbreviation,nickname,city,state,year_founded
 1610612737,Atlanta Hawks,ATL,Hawks,Atlanta,Atlanta,1949.0
 1610612738,Boston Celtics,BOS,Celtics,Boston,Massachusetts,1946.0
 1610612739,Cleveland Cavaliers,CLE,Cavaliers,Cleveland,Ohio,1970.0

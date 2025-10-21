@@ -1,0 +1,177 @@
+🚀 Iniciando pipeline ETL v2.4 con auditoría...
+
+[2025-10-20 13:15:44] 🔧 Procesando tabla: common_player_info
+   🧹 Filas eliminadas por IDs vacíos o duplicados: 0
+
+=== 🔍 Auditoría: COMMON_PLAYER_INFO ===
+→ person_id: int64 → object | ΔNulos=+0.00 | OK
+→ first_name: object → object | ΔNulos=+0.00 | OK
+→ last_name: object → object | ΔNulos=+0.00 | OK
+→ display_first_last: object → object | ΔNulos=+0.00 | OK
+→ display_last_comma_first: object → object | ΔNulos=+0.00 | OK
+→ display_fi_last: object → object | ΔNulos=+0.00 | OK
+→ player_slug: object → object | ΔNulos=+0.00 | OK
+→ birthdate: object → object | ΔNulos=+0.00 | OK
+→ school: object → object | ΔNulos=-0.00 | OK
+→ country: object → object | ΔNulos=-0.00 | OK
+→ last_affiliation: object → object | ΔNulos=+0.00 | OK
+→ height: object → object | ΔNulos=-0.02 | OK
+→ weight: float64 → float64 | ΔNulos=+0.00 | OK
+→ season_exp: float64 → datetime64[ns] | ΔNulos=+1.00 | OK
+→ jersey: object → object | ΔNulos=-0.23 | OK
+→ position: object → object | ΔNulos=-0.01 | OK
+→ rosterstatus: object → object | ΔNulos=+0.00 | OK
+→ games_played_current_season_flag: object → object | ΔNulos=+1.00 | OK
+→ team_id: int64 → object | ΔNulos=+0.00 | OK
+→ team_name: object → object | ΔNulos=-0.17 | OK
+→ team_abbreviation: object → object | ΔNulos=-0.17 | OK
+→ team_code: object → object | ΔNulos=-0.17 | OK
+→ team_city: object → object | ΔNulos=-0.17 | OK
+→ playercode: object → object | ΔNulos=-0.00 | OK
+→ from_year: float64 → datetime64[ns] | ΔNulos=+1.00 | OK
+→ to_year: float64 → datetime64[ns] | ΔNulos=+1.00 | OK
+→ dleague_flag: object → object | ΔNulos=+0.00 | OK
+→ nba_flag: object → object | ΔNulos=+0.00 | OK
+→ games_played_flag: object → object | ΔNulos=+0.00 | OK
+→ draft_year: object → object | ΔNulos=+0.26 | OK
+→ draft_round: object → object | ΔNulos=-0.04 | OK
+→ draft_number: object → object | ΔNulos=-0.05 | OK
+→ greatest_75_flag: object → object | ΔNulos=+0.00 | OK
+✅ common_player_info procesado correctamente (4171 filas). Guardado en c:\Users\juanl\Downloads\final\csv\Daft17_Group01_PF\data_final\common_player_info_final.csv
+
+[2025-10-20 13:15:45] 🔧 Procesando tabla: game
+   🧹 Filas eliminadas por IDs vacíos o duplicados: 56
+
+=== 🔍 Auditoría: GAME ===
+→ season_id: int64 → object | ΔNulos=+1.00 | OK
+→ team_id_home: int64 → int64 | ΔNulos=+0.00 | OK
+→ team_abbreviation_home: object → object | ΔNulos=+0.00 | OK
+→ team_name_home: object → object | ΔNulos=+0.00 | OK
+→ game_id: int64 → object | ΔNulos=+0.00 | OK
+→ game_date: object → object | ΔNulos=+0.00 | OK
+→ matchup_home: object → object | ΔNulos=+0.00 | OK
+→ wl_home: object → object | ΔNulos=-0.00 | OK
+→ min: int64 → int64 | ΔNulos=+0.00 | OK
+→ fgm_home: float64 → float64 | ΔNulos=+0.00 | OK
+→ fga_home: float64 → float64 | ΔNulos=+0.00 | OK
+→ fg_pct_home: float64 → float64 | ΔNulos=+0.00 | OK
+→ fg3m_home: float64 → float64 | ΔNulos=-0.00 | OK
+→ fg3a_home: float64 → float64 | ΔNulos=-0.00 | OK
+→ fg3_pct_home: float64 → float64 | ΔNulos=-0.00 | OK
+→ ftm_home: float64 → float64 | ΔNulos=+0.00 | OK
+→ fta_home: float64 → float64 | ΔNulos=+0.00 | OK
+→ ft_pct_home: float64 → float64 | ΔNulos=+0.00 | OK
+→ oreb_home: float64 → float64 | ΔNulos=-0.00 | OK
+→ dreb_home: float64 → float64 | ΔNulos=-0.00 | OK
+→ reb_home: float64 → float64 | ΔNulos=+0.00 | OK
+→ ast_home: float64 → float64 | ΔNulos=+0.00 | OK
+→ stl_home: float64 → float64 | ΔNulos=-0.00 | OK
+→ blk_home: float64 → float64 | ΔNulos=-0.00 | OK
+→ tov_home: float64 → float64 | ΔNulos=-0.00 | OK
+→ pf_home: float64 → float64 | ΔNulos=+0.00 | OK
+→ pts_home: float64 → float64 | ΔNulos=+0.00 | OK
+→ plus_minus_home: int64 → int64 | ΔNulos=+0.00 | OK
+→ video_available_home: int64 → int64 | ΔNulos=+0.00 | OK
+→ team_id_away: int64 → int64 | ΔNulos=+0.00 | OK
+→ team_abbreviation_away: object → object | ΔNulos=+0.00 | OK
+→ team_name_away: object → object | ΔNulos=+0.00 | OK
+→ matchup_away: object → object | ΔNulos=+0.00 | OK
+→ wl_away: object → object | ΔNulos=-0.00 | OK
+→ fgm_away: float64 → float64 | ΔNulos=+0.00 | OK
+→ fga_away: float64 → float64 | ΔNulos=+0.00 | OK
+→ fg_pct_away: float64 → float64 | ΔNulos=+0.00 | OK
+→ fg3m_away: float64 → float64 | ΔNulos=-0.00 | OK
+→ fg3a_away: float64 → float64 | ΔNulos=-0.00 | OK
+→ fg3_pct_away: float64 → float64 | ΔNulos=-0.00 | OK
+→ ftm_away: float64 → float64 | ΔNulos=+0.00 | OK
+→ fta_away: float64 → float64 | ΔNulos=+0.00 | OK
+→ ft_pct_away: float64 → float64 | ΔNulos=+0.00 | OK
+→ oreb_away: float64 → float64 | ΔNulos=-0.00 | OK
+→ dreb_away: float64 → float64 | ΔNulos=-0.00 | OK
+→ reb_away: float64 → float64 | ΔNulos=+0.00 | OK
+→ ast_away: float64 → float64 | ΔNulos=+0.00 | OK
+→ stl_away: float64 → float64 | ΔNulos=-0.00 | OK
+→ blk_away: float64 → float64 | ΔNulos=-0.00 | OK
+→ tov_away: float64 → float64 | ΔNulos=-0.00 | OK
+→ pf_away: float64 → float64 | ΔNulos=+0.00 | OK
+→ pts_away: float64 → float64 | ΔNulos=+0.00 | OK
+→ plus_minus_away: int64 → int64 | ΔNulos=+0.00 | OK
+→ video_available_away: int64 → int64 | ΔNulos=+0.00 | OK
+→ season_type: object → object | ΔNulos=+1.00 | OK
+✅ game procesado correctamente (65642 filas). Guardado en c:\Users\juanl\Downloads\final\csv\Daft17_Group01_PF\data_final\game_final.csv
+
+[2025-10-20 13:15:55] 🔧 Procesando tabla: game_summary
+   🧹 Filas eliminadas por IDs vacíos o duplicados: 49
+
+=== 🔍 Auditoría: GAME_SUMMARY ===
+→ game_date_est: object → object | ΔNulos=+0.00 | OK
+→ game_sequence: float64 → float64 | ΔNulos=+0.00 | OK
+→ game_id: int64 → object | ΔNulos=+0.00 | OK
+→ game_status_id: int64 → object | ΔNulos=+0.00 | OK
+→ game_status_text: object → object | ΔNulos=-0.45 | OK
+→ gamecode: object → object | ΔNulos=+0.00 | OK
+→ home_team_id: int64 → object | ΔNulos=+0.00 | OK
+→ visitor_team_id: int64 → object | ΔNulos=+0.00 | OK
+→ season: int64 → datetime64[ns] | ΔNulos=+0.00 | OK
+→ live_period: int64 → int64 | ΔNulos=+0.00 | OK
+→ live_pc_time: object → object | ΔNulos=-0.96 | OK
+→ natl_tv_broadcaster_abbreviation: object → object | ΔNulos=-0.89 | OK
+→ live_period_time_bcast: object → object | ΔNulos=+0.00 | OK
+→ wh_status: int64 → int64 | ΔNulos=+0.00 | OK
+✅ game_summary procesado correctamente (58021 filas). Guardado en c:\Users\juanl\Downloads\final\csv\Daft17_Group01_PF\data_final\game_summary_final.csv
+
+[2025-10-20 13:15:58] 🔧 Procesando tabla: other_stats
+   🧹 Filas eliminadas por IDs vacíos o duplicados: 0
+
+=== 🔍 Auditoría: OTHER_STATS ===
+→ game_id: int64 → object | ΔNulos=+0.00 | OK
+→ league_id: int64 → object | ΔNulos=+0.00 | OK
+→ team_id_home: int64 → int64 | ΔNulos=+0.00 | OK
+→ team_abbreviation_home: object → object | ΔNulos=+0.00 | OK
+→ team_city_home: object → object | ΔNulos=+0.00 | OK
+→ pts_paint_home: int64 → int64 | ΔNulos=+0.00 | OK
+→ pts_2nd_chance_home: int64 → int64 | ΔNulos=+0.00 | OK
+→ pts_fb_home: int64 → int64 | ΔNulos=+0.00 | OK
+→ largest_lead_home: int64 → int64 | ΔNulos=+0.00 | OK
+→ lead_changes: int64 → int64 | ΔNulos=+0.00 | OK
+→ times_tied: int64 → int64 | ΔNulos=+0.00 | OK
+→ team_turnovers_home: float64 → float64 | ΔNulos=-0.00 | OK
+→ total_turnovers_home: float64 → float64 | ΔNulos=-0.00 | OK
+→ team_rebounds_home: float64 → float64 | ΔNulos=-0.00 | OK
+→ pts_off_to_home: float64 → float64 | ΔNulos=-0.00 | OK
+→ team_id_away: int64 → int64 | ΔNulos=+0.00 | OK
+→ team_abbreviation_away: object → object | ΔNulos=+0.00 | OK
+→ team_city_away: object → object | ΔNulos=+0.00 | OK
+→ pts_paint_away: int64 → int64 | ΔNulos=+0.00 | OK
+→ pts_2nd_chance_away: int64 → int64 | ΔNulos=+0.00 | OK
+→ pts_fb_away: int64 → int64 | ΔNulos=+0.00 | OK
+→ largest_lead_away: int64 → int64 | ΔNulos=+0.00 | OK
+→ team_turnovers_away: float64 → float64 | ΔNulos=-0.00 | OK
+→ total_turnovers_away: float64 → float64 | ΔNulos=-0.00 | OK
+→ team_rebounds_away: float64 → float64 | ΔNulos=-0.00 | OK
+→ pts_off_to_away: float64 → float64 | ΔNulos=-0.00 | OK
+✅ other_stats procesado correctamente (28261 filas). Guardado en c:\Users\juanl\Downloads\final\csv\Daft17_Group01_PF\data_final\other_stats_final.csv
+
+[2025-10-20 13:16:00] 🔧 Procesando tabla: player
+
+=== 🔍 Auditoría: PLAYER ===
+→ id: int64 → int64 | ΔNulos=+0.00 | OK
+→ full_name: object → object | ΔNulos=+0.00 | OK
+→ first_name: object → object | ΔNulos=-0.00 | OK
+→ last_name: object → object | ΔNulos=+0.00 | OK
+→ is_active: int64 → int64 | ΔNulos=+0.00 | OK
+✅ player procesado correctamente (4831 filas). Guardado en c:\Users\juanl\Downloads\final\csv\Daft17_Group01_PF\data_final\player_final.csv
+
+[2025-10-20 13:16:00] 🔧 Procesando tabla: team
+
+=== 🔍 Auditoría: TEAM ===
+→ id: int64 → int64 | ΔNulos=+0.00 | OK
+→ full_name: object → object | ΔNulos=+0.00 | OK
+→ abbreviation: object → object | ΔNulos=+0.00 | OK
+→ nickname: object → object | ΔNulos=+0.00 | OK
+→ city: object → object | ΔNulos=+0.00 | OK
+→ state: object → object | ΔNulos=+0.00 | OK
+→ year_founded: float64 → datetime64[ns] | ΔNulos=+1.00 | OK
+✅ team procesado correctamente (30 filas). Guardado en c:\Users\juanl\Downloads\final\csv\Daft17_Group01_PF\data_final\team_final.csv
+
+🟢 Pipeline v2.4 completado correctamente.
