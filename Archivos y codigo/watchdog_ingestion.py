@@ -1,6 +1,5 @@
 # ===============================================================
-# watchdog_ingestion.py
-# Versión final robusta con control de repetición (cooldown)
+# watchdog_ingestion.py — Versión estable y segura (vFinal)
 # Monitorea data_raw/, ejecuta pipeline.py y sube los *_final.csv a SQL Server.
 # ===============================================================
 
@@ -52,7 +51,9 @@ def test_sql_connection():
 
 # === CREAR TABLA AUTOMÁTICAMENTE SI NO EXISTE ===
 def ensure_table_exists(cursor, table_name, df):
+    pk_candidates = ["id", "person_id", "game_id"]
     columns_def = []
+
     for col, dtype in df.dtypes.items():
         if pd.api.types.is_integer_dtype(dtype):
             sql_type = "INT"
@@ -60,7 +61,9 @@ def ensure_table_exists(cursor, table_name, df):
             sql_type = "FLOAT"
         else:
             sql_type = "NVARCHAR(255)"
-        columns_def.append(f"[{col}] {sql_type}")
+        not_null = "NOT NULL" if col in pk_candidates else "NULL"
+        columns_def.append(f"[{col}] {sql_type} {not_null}")
+
     cols_sql = ", ".join(columns_def)
     cursor.execute(
         f"""
@@ -79,17 +82,10 @@ def clean_invalid_floats(df):
             df[col] = (
                 df[col]
                 .astype(str)
-                .replace(
-                    {
-                        "nan": None,
-                        "NaN": None,
-                        "None": None,
-                        "inf": None,
-                        "-inf": None,
-                        "": None,
-                        " ": None,
-                    }
-                )
+                .replace({
+                    "nan": None, "NaN": None, "None": None,
+                    "inf": None, "-inf": None, "": None, " ": None,
+                })
             )
     return df
 
@@ -105,8 +101,6 @@ def upload_csv_to_sql(file_path):
         cursor = conn.cursor()
 
         ensure_table_exists(cursor, table_name, df)
-
-        # Limpiar contenido previo
         cursor.execute(f"DELETE FROM {table_name};")
         conn.commit()
 
@@ -145,7 +139,7 @@ def upload_csv_to_sql(file_path):
 # === WATCHDOG CON CONTROL DE REPETICIÓN ===
 class PipelineTrigger(FileSystemEventHandler):
     last_run_time = 0
-    cooldown_seconds = 15  # Evita ejecuciones múltiples seguidas
+    cooldown_seconds = 15  # evita repeticiones seguidas
 
     def on_any_event(self, event):
         if event.is_directory:
@@ -155,7 +149,7 @@ class PipelineTrigger(FileSystemEventHandler):
 
         now = time.time()
         if now - self.last_run_time < self.cooldown_seconds:
-            print(f"⏸️  Evento ignorado (cooldown activo de {self.cooldown_seconds}s)")
+            print(f"⏸️  Evento ignorado (cooldown de {self.cooldown_seconds}s)")
             return
 
         self.last_run_time = now
@@ -172,18 +166,18 @@ class PipelineTrigger(FileSystemEventHandler):
             print(f"❌ Error ejecutando pipeline: {e}")
             return
 
-        print(f"\n📂 Buscando archivos *_final.csv en carpeta {FINAL_DIR} ...")
+        print(f"\n📂 Buscando archivos *_final.csv en {FINAL_DIR} ...")
         try:
             files = [f for f in os.listdir(FINAL_DIR) if f.endswith("_final.csv")]
             if not files:
-                print("⚠️  No se encontraron archivos *_final.csv en la carpeta final.")
+                print("⚠️  No se encontraron archivos *_final.csv.")
                 return
             for file in files:
                 file_path = os.path.join(FINAL_DIR, file)
                 upload_csv_to_sql(file_path)
             print("\n🟢 Carga completa en SQL Server finalizada.\n")
         except Exception as e:
-            print(f"❌ Error durante la carga a SQL: {e}")
+            print(f"❌ Error durante la carga: {e}")
 
 # === MAIN ===
 if __name__ == "__main__":
@@ -209,5 +203,5 @@ if __name__ == "__main__":
         print(f"\n❌ Error crítico en watchdog: {e}")
 
     finally:
-        print("\n🛑 Watchdog detenido (fin de ejecución).")
+        print("\n🛑 Watchdog detenido.")
         input("Presioná ENTER para cerrar...")

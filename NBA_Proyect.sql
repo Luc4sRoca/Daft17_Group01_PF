@@ -1,4 +1,0 @@
-CREATE DATABASE NBA_Project;
-GO
-USE NBA_Project;
-go
